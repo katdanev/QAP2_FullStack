@@ -7,39 +7,105 @@ const server = http.createServer((req, res) => {
     switch (req.url) {
         
         case '/':
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end('<h1>Welcome to the main page! </h1>');
-            break;
+           
+                // Read file index.html
+                fs.readFile('./views/index.html', 'utf8', (err, data) => {
+                    if (err) {
+                        console.error(err);
+                        res.writeHead(500, { 'Content-Type': 'text/plain' });
+                        res.end('Internal Server Error');
+                        return;
+                    }
+    
+                    // Add header and send file 
+                    res.writeHead(200, { 'Content-Type': 'text/html' });
+                    res.end(data);
+                });
+                break;
 
          case '/about':
-             res.writeHead(200, { 'Content-Type': 'text/html' });
-             res.end('<h1>Welcome to the about page! </h1>');
-            break;
+                 fs.readFile('./views/about.html', 'utf8', (err, data) => {
+                    if (err) {
+                        console.error(err);
+                        res.writeHead(500, { 'Content-Type': 'text/plain' });
+                        res.end('Internal Server Error');
+                        return;
+                    }
+                    res.writeHead(200, { 'Content-Type': 'text/html' });
+                    res.end(data);
+                });
+                break;
 
         case '/contact':
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end('<h1>Welcome to the contact page! </h1>');
+            fs.readFile('./views/contact.html', 'utf8', (err, data) => {
+                if (err) {
+                    console.error(err);
+                    res.writeHead(500, { 'Content-Type': 'text/plain' });
+                    res.end('Internal Server Error');
+                    return;
+                }
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(data);
+            });
             break;
+
     
         case '/products':
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end('<h1>Welcome to the products page! </h1>');
-            break;
+            fs.readFile('./views/products.html', 'utf8', (err, data) => {
+                if (err) {
+                    console.error(err);
+                    res.writeHead(500, { 'Content-Type': 'text/plain' });
+                    res.end('Internal Server Error');
+                    return;
+                }
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(data);
+            });
+            break;    
 
         case '/subscribe':
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end('<h1>Welcome to the subscribe page! </h1>');
-            break;   
+            fs.readFile('./views/subscribe.html', 'utf8', (err, data) => {
+                if (err) {
+                    console.error(err);
+                    res.writeHead(500, { 'Content-Type': 'text/plain' });
+                    res.end('Internal Server Error');
+                    return;
+                }
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(data);
+            });
+            break;      
 
         case '/news':
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end('<h1>Welcome to the news page! </h1>');
-            break;       
+            fs.readFile('./views/news.html', 'utf8', (err, data) => {
+                if (err) {
+                    console.error(err);
+                    res.writeHead(500, { 'Content-Type': 'text/plain' });
+                    res.end('Internal Server Error');
+                    return;
+                }
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(data);
+            });
+            break;    
     
-        case '/weather':
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end('<h1>Welcome to the weather page! </h1>');
+        case '/workshops':
+            fs.readFile('./views/workshops.html', 'utf8', (err, data) => {
+                if (err) {
+                    console.error(err);
+                    res.writeHead(500, { 'Content-Type': 'text/plain' });
+                    res.end('Internal Server Error');
+                    return;
+                }
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(data);
+            });
             break;       
+
+            default:
+                res.writeHead(404, { 'Content-Type': 'text/html' });
+                res.end('<h1>Page not found</h1>');
+                break;
 
                
      
